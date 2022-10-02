@@ -9,4 +9,4 @@ Technologies used: JavaScript, TypeScript, Angular, Angular Router, HTML, CSS(SC
 3. Open terminal and enter `npm install` or `npm i`
 4. Run project `npm start`  
 
-Thanks for this test :)
+Thanks for the test task, it was very interesting :)
