@@ -1,0 +1,88 @@
+<div class="popup" *ngIf="isOpenModal">
+  <div class="popup__content">
+    <div *ngIf="option === 'addTodo'" class="popup__add">
+      <h2 class="popup__title">Add a ToDo</h2>
+      <div class="popup__field">
+        <textarea
+          class="popup__field-input"
+          [(ngModel)]="newTodoTitle"
+          [ngStyle]="{ 'border-color': hasSimilarTitle ? 'red' : '' }"
+          (keyup)="hasSimilarTitle = false"
+        ></textarea>
+
+        <p *ngIf="hasSimilarTitle" class="popup__field-error">
+          todo already exists
+        </p>
+      </div>
+      <button
+        type="button"
+        class="popup__add-button"
+        [ngStyle]="{ background: !newTodoTitle.length ? '#D0D0D0' : '' }"
+        [disabled]="!newTodoTitle.length"
+        (click)="onAddTodo(newTodoTitle)"
+      >
+        Save ToDo
+        <img
+          src="assets/images/arrow.svg"
+          alt="arrow for button"
+          class="popup__add-img"
+        />
+      </button>
+    </div>
+
+    <div *ngIf="option === 'deleteTodo'" class="popup__delete">
+      <div class="popup__delete-title">
+        <h2 class="popup__title">Removing a ToDo</h2>
+        <p class="popup__delete-sub-title">
+          Are you sure you want to remove this ToDo? It would be impossible to
+          restore it afterwards
+        </p>
+      </div>
+      <p class="popup__delete-todo-title">
+        {{ selectedTodo.title }}
+      </p>
+
+      <button
+        class="popup__delete-button"
+        (click)="deleteTodo.emit(selectedTodo)"
+      >
+        Yes, Remove ToDo
+      </button>
+    </div>
+
+    <div *ngIf="option === 'editTodo'" class="popup__edit">
+      <h2 class="popup__title">Edit a ToDo</h2>
+      <div class="popup__field">
+        <textarea
+          class="popup__field-input"
+          [(ngModel)]="editedTodoTitle"
+          (keyup)="hasSimilarTitle = false"
+        ></textarea>
+        <p *ngIf="hasSimilarTitle" class="popup__field-error">
+          todo already exists
+        </p>
+      </div>
+      <button
+        type="button"
+        class="popup__add-button"
+        [ngStyle]="{ background: !editedTodoTitle.length ? '#D0D0D0' : '' }"
+        [disabled]="!editedTodoTitle.length"
+        (click)="onEditTodo(editedTodoTitle)"
+      >
+        Save ToDo
+        <img
+          src="assets/images/arrow.svg"
+          alt="arrow for button"
+          class="popup__add-img"
+        />
+      </button>
+    </div>
+
+    <img
+      src="assets/images/cross.svg"
+      alt="cross"
+      class="popup__close"
+      (click)="closeModal.emit(); hasSimilarTitle = false"
+    />
+  </div>
+</div>

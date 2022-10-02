@@ -1,0 +1,132 @@
+.popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.05);
+
+  &__close {
+    cursor: pointer;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+  }
+
+  &__content {
+    position: relative;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+    background: #fff;
+    width: 560px;
+    padding: 40px 80px;
+  }
+
+  &__field {
+    width: 100%;
+
+    &-input {
+      border: 1px solid #d9d9d9;
+      width: 100%;
+      border-radius: 6px;
+      min-height: 64px;
+      padding: 8px 14px;
+      resize: vertical;
+      outline: none;
+    }
+
+    &-error {
+      color: red;
+      font-weight: 500;
+    }
+  }
+
+  &__add {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    align-items: center;
+
+    &-button {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff;
+      height: 50px;
+      background: linear-gradient(270deg, #1ea39b 0%, #38ef7d 100%);
+      border-radius: 6px;
+      border: none;
+      width: 100%;
+
+      &:hover {
+        cursor: pointer;
+        background: linear-gradient(310deg, #1ea39b 20%, #38ef7d 80%);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+
+    &-img {
+      position: absolute;
+      right: 0;
+      padding-right: 15px;
+    }
+  }
+
+  &__delete {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+
+    &-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    &-todo-title {
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    &-button {
+      border: 1px solid #e1e1e1;
+      border-radius: 6px;
+      background: #fff;
+      width: 100%;
+      height: 50px;
+      font-weight: 700;
+      font-size: 18px;
+      color: #30313a;
+      transition: 300ms;
+
+      &:hover {
+        cursor: pointer;
+        background: #f0f0f0;
+      }
+    }
+  }
+
+  &__edit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+}

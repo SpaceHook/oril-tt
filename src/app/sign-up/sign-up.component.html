@@ -1,0 +1,245 @@
+<div class="sign-up">
+  <div class="sign-up__content">
+    <form class="sign-up__form" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+      <h1 class="sign-up__form-title">Create Account</h1>
+      <span class="sign-up__form-sub-title">
+        Let’s get productive toghether!
+      </span>
+
+      <div class="sign-up__form-content">
+        <div class="sign-up__form-field sign-up__form-full-name">
+          <p class="sign-up__form-field-name">Full Name *</p>
+          <input
+            type="text"
+            name="fullname"
+            class="sign-up__form-field-input"
+            [ngClass]="{
+              'sign-up__form-field--invalid':
+                fullname.invalid && (fullname.dirty || fullname.touched)
+            }"
+            ngModel
+            #fullname="ngModel"
+            minlength="5"
+            placeholder="Max Dumiak"
+            required
+          />
+
+          <span
+            *ngIf="fullname.errors?.['minlength'] && (fullname.dirty || fullname.touched)"
+            class="sign-up__form-field--errors"
+          >
+            Full Name must be at least 5 characters long
+          </span>
+          <span
+            *ngIf="fullname.errors?.['required'] && (fullname.dirty || fullname.touched)"
+            class="sign-up__form-field--errors"
+          >
+            Full Name is required
+          </span>
+        </div>
+
+        <div class="sign-up__form-field sign-up__form-username">
+          <p class="sign-up__form-field-name">Username *</p>
+          <input
+            type="text"
+            name="username"
+            class="sign-up__form-field-input"
+            [ngClass]="{
+              'sign-up__form-field--invalid':
+                username.invalid && (username.dirty || username.touched)
+            }"
+            ngModel
+            #username="ngModel"
+            minlength="3"
+            required
+            placeholder="SpaceHook"
+          />
+          <span
+            *ngIf="username.errors?.['minlength'] && (username.dirty || username.touched)"
+            class="sign-up__form-field--errors"
+          >
+            Username must be at least 3 characters long
+          </span>
+          <span
+            *ngIf="username.errors?.['required'] && (username.dirty || username.touched)"
+            class="sign-up__form-field--errors"
+          >
+            Username is required
+          </span>
+        </div>
+
+        <div class="sign-up__form-field sign-up__form-email">
+          <p class="sign-up__form-field-name">Email *</p>
+          <input
+            type="text"
+            name="email"
+            class="sign-up__form-field-input"
+            [ngClass]="{
+              'sign-up__form-field--invalid':
+                email.invalid && (email.dirty || email.touched)
+            }"
+            ngModel
+            #email="ngModel"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            required
+            placeholder="dumiakm@mgail.com"
+          />
+
+          <span
+            *ngIf="email.errors?.['required'] && (email.dirty || email.touched)"
+            class="sign-up__form-field--errors"
+          >
+            Email is required
+          </span>
+
+          <span
+            *ngIf="email.errors?.['pattern']"
+            class="sign-up__form-field--errors"
+          >
+            Please enter a valid email address
+          </span>
+        </div>
+
+        <div class="sign-up__form-field sign-up__form-phone">
+          <p class="sign-up__form-field-name">Phone number *</p>
+          <input
+            type="tel"
+            name="phone"
+            class="sign-up__form-field-input"
+            [ngClass]="{
+              'sign-up__form-field--invalid':
+                phone.invalid && (phone.dirty || phone.touched)
+            }"
+            ngModel
+            #phone="ngModel"
+            maxlength="10"
+            pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+            required
+            placeholder="0970140858"
+          />
+          <span
+            *ngIf="phone.errors?.['required'] && (phone.dirty || phone.touched)"
+            class="sign-up__form-field--errors"
+          >
+            Phone is required
+          </span>
+
+          <span
+            *ngIf="phone.errors?.['pattern']"
+            class="sign-up__form-field--errors"
+          >
+            Please enter a valid phone
+          </span>
+        </div>
+
+        <div class="sign-up__form-address" ngModelGroup="address">
+          <div class="sign-up__form-field sign-up__form-street">
+            <p class="sign-up__form-field-name">Address line *</p>
+            <input
+              type="text"
+              name="street"
+              class="sign-up__form-field-input"
+              ngModel
+              [ngClass]="{
+                'sign-up__form-field--invalid':
+                  address.invalid && (address.dirty || address.touched)
+              }"
+              #address="ngModel"
+              required
+              placeholder="4954 Canis Heights Drive"
+            />
+
+            <span
+              *ngIf="address.errors?.['required'] && (address.dirty || address.touched)"
+              class="sign-up__form-field--errors"
+            >
+              Address is required
+            </span>
+          </div>
+
+          <div class="sign-up__form-field sign-up__form-suite">
+            <p class="sign-up__form-field-name">Suite</p>
+            <input
+              type="text"
+              name="suite"
+              class="sign-up__form-field-input"
+              ngModel
+              #suite="ngModel"
+            />
+          </div>
+
+          <div class="sign-up__form-field sign-up__form-city">
+            <p class="sign-up__form-field-name">City *</p>
+            <input
+              type="text"
+              name="city"
+              class="sign-up__form-field-input"
+              [ngClass]="{
+                'sign-up__form-field--invalid':
+                  city.invalid && (city.dirty || city.touched)
+              }"
+              ngModel
+              #city="ngModel"
+              required
+              placeholder="Los Angeles"
+            />
+
+            <span
+              *ngIf="city.errors?.['required'] && (city.dirty || city.touched)"
+              class="sign-up__form-field--errors"
+            >
+              City is required
+            </span>
+          </div>
+
+          <div class="sign-up__form-field sign-up__form-zip">
+            <p class="sign-up__form-field-name">ZIP Code *</p>
+            <input
+              type="text"
+              name="zip"
+              class="sign-up__form-field-input"
+              [ngClass]="{
+                'sign-up__form-field--invalid':
+                  zip.invalid && (zip.dirty || zip.touched)
+              }"
+              ngModel
+              #zip="ngModel"
+              maxlength="10"
+              minlength="4"
+              required
+              placeholder="90013"
+            />
+
+            <span
+              *ngIf="zip.errors?.['required'] && (zip.dirty || zip.touched)"
+              class="sign-up__form-field--errors"
+            >
+              ZIP is required
+            </span>
+
+            <span
+              *ngIf="zip.errors?.['minlength'] && (zip.dirty || zip.touched)"
+              class="sign-up__form-field--errors"
+            >
+              The ZIP code must be between 4 and 10
+            </span>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="sign-up__form-submit-button"
+          [disabled]="f.invalid"
+        >
+          Create Account
+          <img
+            src="assets/images/arrow.svg"
+            alt="arrow for button"
+            class="sign-up__form-submit-image"
+          />
+        </button>
+      </div>
+    </form>
+    <ngx-spinner size="medium" type="square-jelly-box"></ngx-spinner>
+  </div>
+</div>

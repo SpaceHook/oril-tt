@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  margin: 0 auto;
+  border-bottom: 1px solid #e1e1e1;
+
+  &__logo {
+    margin-left: 100px;
+    transition: 300ms;
+
+    &:hover {
+      transform: rotate(-5deg);
+    }
+  }
+}

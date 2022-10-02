@@ -1,0 +1,8 @@
+.button {
+  border: none;
+  padding: 0;
+
+  &:focus:not(:active) {
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,22 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html, input, textarea, p {
+  font-family: 'Open Sans';
+  font-size: 16px;
+  color: $primaryDark;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 32px;
+  color: $primaryDark;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 26px;
+  color: $primaryDark;
+}

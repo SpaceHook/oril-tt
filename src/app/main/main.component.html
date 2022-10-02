@@ -1,0 +1,76 @@
+<div class="main">
+  <div class="main__content">
+    <div class="main__header">
+      <h1 class="main__title">All ToDo’s</h1>
+      <button
+        type="button"
+        class="button main__header-button"
+        [ngClass]="{ 'is-loading': isLoading }"
+        (click)="onOpenModal('addTodo')"
+      >
+        Add a ToDo
+        <img
+          src="assets/images/plus.svg"
+          alt="plus for button"
+          class="main__header-button-img"
+        />
+      </button>
+    </div>
+    <div class="main__todos">
+      <div *ngFor="let todo of todos" class="main__todo">
+        <label class="main__todo-clickable">
+          <input
+            type="checkbox"
+            class="main__todo-checkbox"
+            [checked]="todo.completed"
+            (click)="toggleComplete(todo)"
+          />
+          <p class="main__todo-text">{{ todo.title }}</p>
+        </label>
+        <div class="main__todo-options">
+          <button
+            class="button main__todo-options-button"
+            [ngClass]="{ 'is-loading': spinnerEdit === todo.id }"
+            (click)="
+              onOpenModal('editTodo');
+              selectedTodo = todo;
+              editedTodoTitle = todo.title
+            "
+          >
+            <img
+              src="assets/images/edit.svg"
+              alt="edit todo icon"
+              class="main__todo-option"
+              *ngIf="spinnerEdit !== todo.id"
+            />
+          </button>
+          <button
+            class="button main__todo-options-button"
+            [ngClass]="{ 'is-loading': spinnerDelete === todo.id }"
+            (click)="onOpenModal('deleteTodo'); selectedTodo = todo"
+          >
+            <img
+              src="assets/images/delete.svg"
+              alt="delete todo icon"
+              class="main__todo-option"
+              *ngIf="spinnerDelete !== todo.id"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-modal
+    [option]="option"
+    [isOpenModal]="isOpenModal"
+    (closeModal)="isOpenModal = false"
+    (addTodo)="onAddTodo($event)"
+    (deleteTodo)="onDeleteTodo($event)"
+    [selectedTodo]="selectedTodo"
+    [hasSimilarTitle]="hasSimilarTitle"
+    [newTodoTitle]="newTodoTitle"
+    [editedTodoTitle]="editedTodoTitle"
+    [todos]="todos"
+    (editTodo)="onEditTodo($event)"
+  ></app-modal>
+</div>
